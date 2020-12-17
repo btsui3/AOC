@@ -1,24 +1,32 @@
 package days
 
 import (
+	"fmt"
 	"io/ioutil"
 	"net/http"
 	"strconv"
 	"strings"
 )
 
-// GetExpenseReportProduct takes no input and returns an int
-func GetExpenseReportProduct() int {
+//GetInput gets string input from AOC
+func GetInput(day int) []string {
 	var sessionID = "53616c7465645f5fdba1ca082a2a18c88311d76b8744021d54793ca0fe09ce7a361fc8ab754b4ddb6d0ea24a424a76b6"
-	byteSlice, err := HTTPwithCookies("https://adventofcode.com/2020/day/1/input", sessionID)
+	url := fmt.Sprintf("https://adventofcode.com/2020/day/%d/input", day)
+	byteSlice, err := HTTPwithCookies(url, sessionID)
 	if err != nil {
 		panic(err)
 	}
 	input := string(byteSlice)
 	stringSlice := strings.Split(input, "\n")
+	return stringSlice
+}
+
+// GetExpenseReportProduct takes no input and returns an int
+func GetExpenseReportProduct() int {
+	input := GetInput(1)
 	var intSlice = []int{}
 
-	for _, numStr := range stringSlice {
+	for _, numStr := range input {
 
 		if numStr != "" {
 			numInt, err := strconv.Atoi(numStr)

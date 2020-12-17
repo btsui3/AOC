@@ -5,6 +5,8 @@ import (
 )
 
 func main() {
-	result := days.GetExpenseReportProduct()
-	println(result)
+	// var result = days.GetExpenseReportProduct()
+	// println(result)
+
+	days.Two()
 }

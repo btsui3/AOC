@@ -1,0 +1,11 @@
+/Users/btsui/Projects/AOC/2020/Csharp/bin/Debug/netcoreapp3.1/Csharp
+/Users/btsui/Projects/AOC/2020/Csharp/bin/Debug/netcoreapp3.1/Csharp.deps.json
+/Users/btsui/Projects/AOC/2020/Csharp/bin/Debug/netcoreapp3.1/Csharp.runtimeconfig.json
+/Users/btsui/Projects/AOC/2020/Csharp/bin/Debug/netcoreapp3.1/Csharp.runtimeconfig.dev.json
+/Users/btsui/Projects/AOC/2020/Csharp/bin/Debug/netcoreapp3.1/Csharp.dll
+/Users/btsui/Projects/AOC/2020/Csharp/bin/Debug/netcoreapp3.1/Csharp.pdb
+/Users/btsui/Projects/AOC/2020/Csharp/obj/Debug/netcoreapp3.1/Csharp.csprojAssemblyReference.cache
+/Users/btsui/Projects/AOC/2020/Csharp/obj/Debug/netcoreapp3.1/Csharp.AssemblyInfoInputs.cache
+/Users/btsui/Projects/AOC/2020/Csharp/obj/Debug/netcoreapp3.1/Csharp.AssemblyInfo.cs
+/Users/btsui/Projects/AOC/2020/Csharp/obj/Debug/netcoreapp3.1/Csharp.dll
+/Users/btsui/Projects/AOC/2020/Csharp/obj/Debug/netcoreapp3.1/Csharp.pdb
