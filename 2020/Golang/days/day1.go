@@ -17,6 +17,7 @@ func GetInput(day int) []string {
 		panic(err)
 	}
 	input := string(byteSlice)
+	input = strings.TrimSpace(input)
 	stringSlice := strings.Split(input, "\n")
 	return stringSlice
 }

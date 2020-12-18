@@ -9,7 +9,6 @@ import (
 // Two is Day 2 of AOC
 func Two() {
 	inputSlice := GetInput(2)
-	//fmt.Printf("%v", inputSlice)
 	partOneSlice := []string{}
 	partTwoSlice := []string{}
 
