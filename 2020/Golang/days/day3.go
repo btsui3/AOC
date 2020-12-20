@@ -20,19 +20,21 @@ func Three() {
 	trees := []int{}
 
 	for slope := 0; slope < len(slopes); slope++ {
-		treesAtSlope := treesInSlope(inputSlice, slopes[slope][0], slopes[slope][1])
+		right := slopes[slope][0]
+		down := slopes[slope][1]
+		treesAtSlope := treesInSlope(inputSlice, right, down)
 		trees = append(trees, treesAtSlope)
 	}
 
-	multiplied := 1
+	treesMultiplied := 1
 	for tree := 0; tree < len(trees); tree++ {
-		multiplied = multiplied * trees[tree]
+		treesMultiplied = treesMultiplied * trees[tree]
 	}
 
-	fmt.Print("Trees encountered: ")
-	fmt.Println(trees)
-	fmt.Print("Trees multiplied: ")
-	fmt.Println(multiplied)
+	fmt.Print("Trees Part 1: ")
+	fmt.Println(trees[1])
+	fmt.Print("Trees Part 2: ")
+	fmt.Println(treesMultiplied)
 }
 
 func treesInSlope(grid []string, right int, down int) int {
@@ -40,28 +42,17 @@ func treesInSlope(grid []string, right int, down int) int {
 	row := 0
 	column := 0
 
-	for {
-		if column >= len(grid[0]) {
-			column = column % len(grid[0])
-		}
+	for row < len(grid) {
 
-		if row >= len(grid) {
-			break
-		}
+		var runeAt = grid[row][column]
 
-		if isItATree(grid[row], column) {
+		if runeAt == '#' {
 			trees++
 		}
 
-		column = column + right
 		row = row + down
+		column = (column + right) % len(grid[0]) // Pattern Repeats -> Use modulus
 	}
 
 	return trees
-}
-
-func isItATree(row string, columnPos int) bool {
-	toRune := []rune(row)
-	tree := '#'
-	return toRune[columnPos] == tree
 }
