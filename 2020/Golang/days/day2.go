@@ -8,7 +8,8 @@ import (
 
 // Two is Day 2 of AOC
 func Two() {
-	inputSlice := GetInput(2)
+	input := GetInput(2)
+	inputSlice := strings.Split(input, "\n")
 	partOneSlice := []string{}
 	partTwoSlice := []string{}
 

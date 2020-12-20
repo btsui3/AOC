@@ -9,7 +9,7 @@ import (
 )
 
 //GetInput gets string input from AOC
-func GetInput(day int) []string {
+func GetInput(day int) string {
 	var sessionID = "53616c7465645f5fdba1ca082a2a18c88311d76b8744021d54793ca0fe09ce7a361fc8ab754b4ddb6d0ea24a424a76b6"
 	url := fmt.Sprintf("https://adventofcode.com/2020/day/%d/input", day)
 	byteSlice, err := HTTPwithCookies(url, sessionID)
@@ -18,16 +18,17 @@ func GetInput(day int) []string {
 	}
 	input := string(byteSlice)
 	input = strings.TrimSpace(input)
-	stringSlice := strings.Split(input, "\n")
-	return stringSlice
+	return input
 }
 
 // GetExpenseReportProduct takes no input and returns an int
 func GetExpenseReportProduct() int {
 	input := GetInput(1)
+
+	inputStringSlice := strings.Split(input, "\n")
 	var intSlice = []int{}
 
-	for _, numStr := range input {
+	for _, numStr := range inputStringSlice {
 
 		if numStr != "" {
 			numInt, err := strconv.Atoi(numStr)
@@ -49,6 +50,7 @@ func GetExpenseReportProduct() int {
 	return 0
 }
 
+// ThreeProducts is Part 2 of Day1
 func ThreeProducts(intSlice []int) (bool, int) {
 	target := 2020
 	for i := 0; i < len(intSlice); i++ {
@@ -64,6 +66,7 @@ func ThreeProducts(intSlice []int) (bool, int) {
 	return false, 0
 }
 
+// TwoProducts is Part 1 of Day1
 func TwoProducts(intSlice []int) {
 	dict := map[int]int{}
 	target := 2020

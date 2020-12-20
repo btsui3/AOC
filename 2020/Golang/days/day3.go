@@ -2,18 +2,16 @@ package days
 
 import (
 	"fmt"
+	"strings"
 )
 
 // Three : advent of code, day three part1 and 2.
 func Three() {
-	inputSlice := GetInput(3)
-	//inputSlice := strings.TrimSpace(inputSlice)
-	//inputSlice := strings.Replace(inputSlice, " ", "", -1)
-
-	//inputSlice = delete_empty(inputSlice)
+	input := GetInput(3)
+	inputSlice := strings.Split(input, "\n")
 	slopes := [5][2]int{
 		{1, 1},
-		{3, 1},
+		{3, 1}, // Part 1
 		{5, 1},
 		{7, 1},
 		{1, 2},
@@ -35,16 +33,6 @@ func Three() {
 	fmt.Println(trees)
 	fmt.Print("Trees multiplied: ")
 	fmt.Println(multiplied)
-}
-
-func delete_empty(s []string) []string {
-	var r []string
-	for _, str := range s {
-		if str != "" {
-			r = append(r, str)
-		}
-	}
-	return r
 }
 
 func treesInSlope(grid []string, right int, down int) int {
