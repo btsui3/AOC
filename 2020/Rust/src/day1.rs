@@ -1,0 +1,21 @@
+use std::fs;
+use itertools::Itertools;
+
+pub fn day1() -> String {
+    let values = read_data();
+    let result :Option<usize> = values.iter().combinations(2)
+    .find(|v| v[0] + v[1] == 2020)
+    .map(|v| v.into_iter().product::<usize>());
+      match result {
+        Some(v) => v.to_string(),
+        None => "No solution".to_string()
+    }
+} 
+
+fn read_data() -> Vec<usize>{
+    let values = fs::read_to_string("./src/inputs/input_day01.txt").expect("Could not read file");
+    values
+    .split('\n')
+    .filter_map(|s|s.parse::<usize>().ok())
+    .collect()
+}
