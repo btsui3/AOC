@@ -1,4 +1,4 @@
-use rust::day1::day1;
+use rust::day1::{day1_part1, day1_part2};
 fn main() {
     let args = std::env::args().collect::<Vec<String>>();
     let problem = args.get(1)
@@ -6,7 +6,8 @@ fn main() {
     .unwrap_or("None");
 
     let result = match problem {
-        "day1" => day1(),
+        "day1" => day1_part1(),
+        "day1-part2" => day1_part2(),
         _ => "Haven't done it yet".to_string()
     };
     println!("{}", result); 
