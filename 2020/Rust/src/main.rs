@@ -1,4 +1,4 @@
-use rust::{day1::{day1_part1, day1_part2}, day2::{self, day2}};
+use rust::{day1::{day1_part1, day1_part2}, day2::day2, day3::day3};
 fn main() {
     let args = std::env::args().collect::<Vec<String>>();
     let problem = args.get(1)
@@ -9,6 +9,7 @@ fn main() {
         "day1" => day1_part1(),
         "day1-part2" => day1_part2(),
         "day2" => day2(),
+        "day3" => day3(),
         _ => "Haven't done it yet".to_string()
     };
     println!("{}", result); 
