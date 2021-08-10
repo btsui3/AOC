@@ -6,6 +6,19 @@ pub fn day3() -> String {
     trees.to_string() 
 }
 
+pub fn day3_part2() -> String {
+    let rows = read_data();
+    let trees = [
+        track_path(&rows, 1, 1),
+        track_path(&rows, 3, 1),
+        track_path(&rows, 5, 1),
+        track_path(&rows, 7, 1),
+        track_path(&rows, 1, 2),
+    ].iter().product::<usize>();
+
+    trees.to_string()
+}
+
 
 fn read_data() -> Vec<String>{
     let values = fs::read_to_string("./src/inputs/input_day03.txt").expect("Could not load file");
