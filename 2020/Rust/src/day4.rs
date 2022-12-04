@@ -12,17 +12,20 @@ pub fn day4() -> String {
 }
 
 
-fn read_data() -> Vec<String>{
+fn read_data() -> HashMap<&str, &str>{
   let values = fs::read_to_string("./src/inputs/input_day04.txt").expect("Could not load file");
 
-  let output = 
-  values
-  .split('\n')
-  .filter(|&s | !s.is_empty())
-  .map(|s|s.to_string())
-  .collect();
+  let output = values.split_whitespace()
+  .flat_map(|p| p.split(':'))
+  .tuples()
+  .collect::<HashMap<_,_>>();
 
   println!("{:?}", output);
+
+  let passport = values.split_whitespace()
+  .flat_map(|p| p.split(':'))
+  .tuples()
+  .collect::<HashMap<_,_>>();
 
   return output;
 }
