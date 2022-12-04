@@ -1,4 +1,4 @@
-use Rust::day1::*;
+use rust::day1::*;
 
 fn main() {
     let args = std::env::args().collect::<Vec<String>>();
