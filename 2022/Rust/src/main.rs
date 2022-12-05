@@ -8,6 +8,7 @@ fn main() {
 
     let result = match problem {
         "day1" => sum_of_max_calories(),
+        "day1_part2" => get_top_3_sum(),
         _ => "No problem found".to_string(),
     };
     println!("{}", result); 
