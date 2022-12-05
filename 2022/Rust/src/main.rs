@@ -1,4 +1,5 @@
 use rust::day1::*;
+use rust::day2::*;
 
 fn main() {
     let args = std::env::args().collect::<Vec<String>>();
@@ -9,6 +10,7 @@ fn main() {
     let result = match problem {
         "day1" => sum_of_max_calories(),
         "day1_part2" => get_top_3_sum(),
+        "day2" => final_score(),
         _ => "No problem found".to_string(),
     };
     println!("{}", result); 
