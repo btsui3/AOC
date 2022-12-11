@@ -9,44 +9,53 @@ pub fn final_score() -> String {
   }
 // A for Rock, B for Paper, and C for Scissors for competitor 1
 // X for Rock, Y for Paper, and Z for Scissors for competitor 2
-// A beats Z, B beats X, and C beats Y
-// A beats X, B beats Y, and C beats Z
-// A beats Y, B beats Z, and C beats X
 
-// If a competitor uses X, they get 1 point
-// If a competitor uses Y, they get 2 points
-// If a competitor uses Z, they get 3 points
-// If a competitor wins, they get 6 points
-// If a competitor loses, they get 0 points
-// If a competitor ties, they get 3 points
+// X ->  1 point
+// Y ->  2 points
+// Z ->  3 points
+// Win ->  6 points
+// Lose ->  0 points
+// Tie ->  3 points
 
-// Calculate score of competitor 2
+// A beats X and loses to Y and ties with Z
+// B beats Y and loses to Z and ties with X
+// C beats Z and loses to X and ties with Y
+
   let mut score_2 = 0;
   for line in guide_list.iter() {
     let mut line_chars = line.chars();
     let competitor_1 = line_chars.next().unwrap();
     let competitor_2 = line_chars.next().unwrap();
-    if competitor_1 == competitor_2 {
-      score_2 += 3;
-    } else if competitor_1 == 'A' && competitor_2 == 'Z' {
-      score_2 += 6;
-    } else if competitor_1 == 'B' && competitor_2 == 'X' {
-      score_2 += 6;
-    } else if competitor_1 == 'C' && competitor_2 == 'Y' {
-      score_2 += 6;
-    } else if competitor_1 == 'A' && competitor_2 == 'X' {
-      score_2 += 1;
-    } else if competitor_1 == 'B' && competitor_2 == 'Y' {
-      score_2 += 2;
-    } else if competitor_1 == 'C' && competitor_2 == 'Z' {
-      score_2 += 3;
-    } else if competitor_1 == 'A' && competitor_2 == 'Y' {
-      score_2 += 0;
-    } else if competitor_1 == 'B' && competitor_2 == 'Z' {
-      score_2 += 0;
-    } else if competitor_1 == 'C' && competitor_2 == 'X' {
-      score_2 += 0;
+
+    // Calculate score of competitor 2 if competitor 1 uses X using a match statement
+    match competitor_1 {
+      'A' => {
+        match competitor_2 {
+          'X' => score_2 += 1 + 3,
+          'Y' => score_2 += 2 + 6,
+          'Z' => score_2 += 3 + 0,
+          _ => (),
+        }
+      },
+      'B' => {
+        match competitor_2 {
+          'X' => score_2 += 1 + 0,
+          'Y' => score_2 += 2 + 3,
+          'Z' => score_2 += 3 + 6,
+          _ => (),
+        }
+      },
+      'C' => {
+        match competitor_2 {
+          'X' => score_2 += 1 + 6,
+          'Y' => score_2 += 2 + 0,
+          'Z' => score_2 += 3 + 3,
+          _ => (),
+        }
+      },
+      _ => (),
     }
   }
+
   return score_2.to_string();
 }
