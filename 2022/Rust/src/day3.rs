@@ -12,65 +12,55 @@ pub fn get_item_priority_sum() -> String {
   return part1_sum(item_priority_list);
 }
 
-
 pub fn part1_sum(item_priority_list : Vec<String>) -> String {
-  // Create hash map of item and priority
-  //Lowercase item types a through z have priorities 1 through 26.
-  //Uppercase item types A through Z have priorities 27 through 52.
-
   let item_priority_map = get_item_priority_map();
+  let mut result = 0;
 
-  // Divide list in half
-  let mut first_half = Vec::new();
-  let mut second_half = Vec::new();
+  for item in item_priority_list.iter() {
+      let first_half_string = item.split_at(item.len() / 2).0;
+      let second_half_string = item.split_at(item.len() / 2).1;
 
-  for (index, item) in item_priority_list.iter().enumerate() {
-    if index < item_priority_list.len() / 2 {
-      first_half.push(item);
-    } else {
-      second_half.push(item);
-    }
+      println!("{:?} {:?} {:?}", item, first_half_string, second_half_string);
+
+      result += calculate_sum(&item_priority_map, &first_half_string, &second_half_string);
   }
 
-  // Find common character in each list
-  let mut common_chars = Vec::new();
-  for item in first_half {
-    for item2 in &second_half {
-      for (index, char) in item.chars().enumerate() {
-        if char == item2.chars().nth(index).unwrap() {
-          common_chars.push(char);
-        }
-      }
-    }
-  }
-
-  // Find sum of common characters
-  let mut sum = 0;
-
-  for char in common_chars {
-    sum += item_priority_map.get(&char).unwrap();
-  }
-
-  
-
-
-
-  return sum.to_string();
-
+  return result.to_string();
 }
 
 pub fn get_item_priority_map() -> HashMap<char, i32> {
   let mut item_priority_map = HashMap::new();
   let mut priority = 1;
-  for item in 'a'..'z' {
+  for item in 'a'..='z' {
     item_priority_map.insert(item, priority);
     priority += 1;
   }
 
-  for item in 'A'..'Z' {
+  let mut priority = 27;
+  for item in 'A'..='Z' {
     item_priority_map.insert(item, priority);
     priority += 1;
   }
 
   return item_priority_map;
+}
+
+pub fn calculate_sum(item_priority_map : &HashMap<char, i32>, first_half_string : &str, second_half_string : &str) -> i32 {
+  let mut sum = 0;
+  let mut hash_map = HashMap::new();
+  for char in first_half_string.chars() {
+    for char2 in second_half_string.chars() {
+      if char == char2 {
+        if !hash_map.contains_key(&char) {
+          hash_map.insert(char, 1);
+          sum += item_priority_map.get(&char).unwrap();
+          println!("{:?} {:?}", char, sum);
+        } else {
+          continue;
+        }
+      }
+    }
+  }
+
+  return sum;
 }
