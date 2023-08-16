@@ -1,6 +1,7 @@
 use rust::day1::*;
 use rust::day2::*;
 use rust::day3::*;
+use rust::day3_part2::get_item_priority_sum_part2;
 
 fn main() {
     let args = std::env::args().collect::<Vec<String>>();
@@ -13,6 +14,7 @@ fn main() {
         "day1_part2" => get_top_3_sum(),
         "day2" => final_score(),
         "day3" => get_item_priority_sum(),
+        "day3_part2" => get_item_priority_sum_part2(),
         _ => "No problem found".to_string(),
     };
     println!("{}", result); 
