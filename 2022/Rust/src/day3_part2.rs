@@ -58,9 +58,7 @@ pub fn calculate_sum(item_priority_map: &HashMap<char, i32>, first_string: &str,
                 hash_set.insert(char);
                 sum += item_priority_map.get(&char).unwrap();
                 println!("{:?} {:?}", char, sum);
-            } else {
-                continue;
-            }
+            }  
         }
     }
 
